@@ -1,9 +1,4 @@
-import random
-import time
-import datetime as time
-import sqlite3
-conn = sqlite3.connect('conting.db')
-c = conn.cursor()
+from daterbase import *
 now = time.datetime.now()
 hour = now.hour
 if hour < 12:
@@ -55,7 +50,7 @@ def securty2():
 securty2()
 
 def items():
-    c = input('''
+    categorys = input('''
     WE HAVE THREE CATEGORYS :
     a.foods
     b.londry
@@ -64,9 +59,7 @@ def items():
     e.hard where
     : 
     ''')
-    if c == 'a':
-        def table():
-            c.execute('CREATE TABLE IF NOT EXIST food(total INTEGER)')
+    if categorys == 'a':
         def food():
             d = input('''
             WE HAVE:
@@ -83,31 +76,40 @@ def items():
                 global e
                 e = 40
                 total += e
-                c.execute('INSERT INTO food(total)VALUES(?)')
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
                 print('you have bought milk  for '+ str(e))
             elif d == '2':
                 print('that is 60ksh for a loaf of bread')
                 global f
                 f = 60
                 total += f
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
                 print('you have bought loaf for'+ str(f))
             elif d == '3':
                 print('that is 60ksh for a paket of yogat')
                 global g
                 g = 60
                 total += g
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
                 print('you have bought yogat for'+ str(g))
             elif d == '4':
                 print('that is 5ksh for 1 sweet')
                 global h
                 h = 5
                 total += h
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
                 print('you have bought a sweet for'+ str(h))
             elif d == '5':
                 print('that is 20ksh for 1 paket')
                 global i
                 i = 20
                 total += i
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
                 print('you have bought crisps for'+ str(i))
             else:
                 print('item not found try again')
@@ -116,16 +118,102 @@ def items():
             if j == 'y':
                 items()
         food()
-
+    elif categorys  == 'b' :
+        def londry():
+            m = input('''
+            a.soap
+            b.shampoo
+            c.cloth
+            ''')
+            if m == 'a':
+                print('that is 20ksh for 1 bar')
+                n = 20
+            elif m == 'b':
+                print('that is 650 par paket')
+                o = 650
+            elif m == 'c':
+                print('that is 190 par scraber')
+                p = 190
+            j = input('do you want to buy a nother item y or n:')
+            if j == 'y':
+                items()
+        londry()
+    elif categorys == 'c':
+        def electroniks():
+            q = input('''
+            a.T.V
+            b.washing machine
+            c.frige
+            d.laptop
+            ''')
+            if q == 'a':
+                print('that is 21579 for 1 T.V')
+                r = 21579
+            elif q == 'b':
+                print('that is 18868 for i one washing machine')
+                s = 18868
+            elif q == 'c':
+                print('that is 26242 for one frige')
+                t = 26242
+            elif q == 'd':
+                print('that is 32423 for one laptop')
+                u = 32423
+            j = input('do you want to buy a nother item y or n:')
+            if j == 'y':
+                items()
+        electroniks()
+        
+    elif categorys == 'd':
+        def cloths():
+            a = input('''
+            a.Tshirts
+            b.shorts
+            c.jens
+            ''')
+            if a == 'a':
+                print('that is 300 ksh for one')
+                b = 300
+            elif a == 'b':
+                print('that is 300 for one')
+                c = 300
+            elif a == 'c':
+                print('that is 400 for one')
+                d = 400
+            j = input('do you want to buy a nother item y or n:')
+            if j == 'y':
+                items()
+        cloths()
+    elif categorys  == 'e':
+        def hard_where():
+            e = input('''
+            a.wheelbarow
+            b.hammer
+            c.scrow driver
+            ''')
+            if e == 'a':
+                print('that is for 500 ksh')
+                f = 500
+            elif e == 'b':
+                print('that is 750 ksh')
+                g = 750
+            elif e == 'c':
+                print('that is 270 ksh')
+                h = 270
+            j = input('do you want to buy a nother item y or n:')
+            if j == 'y':
+                items()
+        hard_where()
             
-            
-
 items()
             
         
 def paying():
     print("your total is ")
-    print(total)
+    for a in c:
+        for item in a:
+            res.append(item)
+    ading = sum(c)
+    print(ading)
     k = int(input('pls pay : '))
     l = k - total
 paying()

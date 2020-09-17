@@ -1,3 +1,5 @@
-a = [5,4,4,1]
-ading = sum(a)
-print(ading)
+total = [('soda',60),('cake',40)]
+autput = 0
+for store in total:
+    autput += store[1]
+print(autput)
