@@ -8,7 +8,7 @@ elif hour > 12 and hour < 18:
 elif hour > 18 and hour < 19:
     print("Good evening")
 else:
-    print('Good night.')
+    print('Have a nice night.')
 
 def securyty():
     print("guards are cheking car ..")
@@ -118,28 +118,32 @@ def items():
             if j == 'y':
                 items()
         food()
+        
     elif categorys  == 'b' :
         def londry():
-            global total
-            total = 0
             m = input('''
             a.soap
             b.shampoo
             c.cloth
             ''')
+            global total
+            total = 0
             if m == 'a':
                 print('that is 20ksh for 1 bar')
                 n = 20
+                total += n
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif m == 'b':
                 print('that is 650 par paket')
                 o = 650
+                total += o
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif m == 'c':
                 print('that is 190 par scraber')
                 p = 190
+                total += p
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             j = input('do you want to buy a nother item y or n:')
@@ -148,32 +152,36 @@ def items():
         londry()
     elif categorys == 'c':
         def electroniks():
-            global total
-            total = 0
             q = input('''
             a.T.V
             b.washing machine
             c.frige
             d.laptop
             ''')
+            global total
+            total = 0
             if q == 'a':
                 print('that is 21579 for 1 T.V')
                 r = 21579
+                total += r
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif q == 'b':
                 print('that is 18868 for i one washing machine')
                 s = 18868
+                total += s
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif q == 'c':
                 print('that is 26242 for one frige')
                 t = 26242
+                total += t
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif q == 'd':
                 print('that is 32423 for one laptop')
                 u = 32423
+                total += u
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             j = input('do you want to buy a nother item y or n:')
@@ -183,26 +191,30 @@ def items():
         
     elif categorys == 'd':
         def cloths():
-            global total
-            total = 0
+
             a = input('''
             a.Tshirts
             b.shorts
             c.jens
             ''')
+            global total
+            total = 0
             if a == 'a':
                 print('that is 300 ksh for one')
                 b = 300
+                total += b
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif a == 'b':
                 print('that is 300 for one')
-                c = 300
+                d = 300
+                total += d
             elif a == 'c':
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
                 print('that is 400 for one')
-                d = 400
+                e = 400
+                total += e
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             j = input('do you want to buy a nother item y or n:')
@@ -211,26 +223,29 @@ def items():
         cloths()
     elif categorys  == 'e':
         def hard_where():
-            global total
-            total = 0
             e = input('''
             a.wheelbarow
             b.hammer
             c.scrow driver
             ''')
+            global total
+            total = 0
             if e == 'a':
                 print('that is for 500 ksh')
                 f = 500
+                total += f
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif e == 'b':
                 print('that is 750 ksh')
                 g = 750
+                total += g
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             elif e == 'c':
                 print('that is 270 ksh')
                 h = 270
+                total += h
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
             j = input('do you want to buy a nother item y or n:')
