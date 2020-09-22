@@ -265,7 +265,7 @@ def items():
             if j == 'y':
                 items()
         hard_where()
-    elif categorys == 'f'
+    elif categorys == 'f':
         def toys():
             e = input('''
             a.drown
@@ -298,7 +298,7 @@ def items():
             j = input('do you want to buy a nother item y or n:')
             if j == 'y':
                 items()
-        hard_where()
+        toys()
             
 items()
             
