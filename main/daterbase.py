@@ -7,5 +7,8 @@ import datetime as time
 import sqlite3
 
 def table():
-        c.execute('CREATE TABLE IF NOT EXISTS food(total INTEGER)')
+    c.execute('CREATE TABLE IF NOT EXISTS food(total INTEGER)')
 table()
+def bill_table():
+    c.execute('CREATE TABLE IF NOT EXISTS billing( bill INTEGER)')
+bill_table()

@@ -11,18 +11,18 @@ else:
     print('Have a nice night.')
 
 def securyty():
-    print("guards are cheking car ..")
+    print("guards are cheking your car ..")
     import time
     time.sleep(2)
 securyty()
 def card():
     import time
-    a = input('take the ticket pls take(ok or thankyou): ')
+    a = input('take the ticket pls.(ok or thankyou): ')
     if a == 'ok' or a =='thankyou' or a == 'k':
         time.sleep(1)
         print('welcome')
     else:
-        print("you have inputed the wrong thing try again")
+        print("you have inseterd the wrong thing try again")
         card()
 card()
 def parking():
@@ -30,7 +30,7 @@ def parking():
     there is a parking at:
     a.parking lot 23
     b.parking lot 34
-    which do you want to park in:
+    where do you want to park?:
     ''')
     if b == 'a' or b == 'b' or b == 'parking lot 23' or b == 'parking lot 34' or b == '23'or b == '34':
         print('go for securty cheek number 2')
@@ -42,7 +42,7 @@ def securty2():
     import random
     import time
     time.sleep(1)
-    print('pls sanitizer')
+    print('pls santize')
     print("your tempreture is")
     import random
     a = random.randrange(35,37)
@@ -51,12 +51,13 @@ securty2()
 
 def items():
     categorys = input('''
-    WE HAVE THREE CATEGORYS :
+    WE HAVE FIVE CATEGORYS :
     a.foods
-    b.londry
+    b.laundry
     c.electronics
-    d.colths
+    d.clothes
     e.hard where
+    f.toys
     : 
     ''')
     if categorys == 'a':
@@ -65,7 +66,7 @@ def items():
             WE HAVE:
             1.milk
             2.bread
-            3.yogat
+            3.yogurt
             4.sweet
             5.crisps
             ''')
@@ -146,6 +147,9 @@ def items():
                 total += p
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
+            else:
+                print('item not found try again')
+                items()
             j = input('do you want to buy a nother item y or n:')
             if j == 'y':
                 items()
@@ -155,7 +159,7 @@ def items():
             q = input('''
             a.T.V
             b.washing machine
-            c.frige
+            c.fridge
             d.laptop
             ''')
             global total
@@ -184,6 +188,9 @@ def items():
                 total += u
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
+            else:
+                print('item not found try again')
+                items()
             j = input('do you want to buy a nother item y or n:')
             if j == 'y':
                 items()
@@ -217,6 +224,9 @@ def items():
                 total += e
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
+            else:
+                print('item not found try again')
+                items()
             j = input('do you want to buy a nother item y or n:')
             if j == 'y':
                 items()
@@ -226,7 +236,7 @@ def items():
             e = input('''
             a.wheelbarow
             b.hammer
-            c.scrow driver
+            c.scew driver
             ''')
             global total
             total = 0
@@ -248,6 +258,43 @@ def items():
                 total += h
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
+            else:
+                print('item not found try again')
+                items()
+            j = input('do you want to buy a nother item y or n:')
+            if j == 'y':
+                items()
+        hard_where()
+    elif categorys == 'f'
+        def toys():
+            e = input('''
+            a.drown
+            b.nerf gun
+            c.Waterproof RC Monster Truck Stunt Car
+            ''')
+            global total
+            total = 0
+            if e == 'a':
+                print('that is for 3900 ksh')
+                f = 3900
+                total += f
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
+            elif e == 'b':
+                print('that is 1000 ksh')
+                g = 1000
+                total += g
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
+            elif e == 'c':
+                print('that is 4551 ksh')
+                h = 4551
+                total += h
+                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                conn.commit()
+            else:
+                print('item not found try again')
+                items()
             j = input('do you want to buy a nother item y or n:')
             if j == 'y':
                 items()
@@ -269,12 +316,8 @@ def total():
 total()
 
 def paying():
-    a= int(input('pls pay:'))
-    b = a-autput
-    if a < autput:
-        print('pls pay more')
-        paying()
-    elif a > autput:
+    a = int(input('pls pay(pay more or equal):'))
+    if a > autput:
         print('your channge is:')
         d = a - autput
         print(d)
