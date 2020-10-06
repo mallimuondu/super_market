@@ -17,23 +17,20 @@ def securyty():
 securyty()
 def card():
     import time
-    a = input('take the ticket pls.(ok or thankyou): ')
-    if a == 'ok' or a =='thankyou' or a == 'k':
-        time.sleep(1)
-        print('welcome')
-    else:
-        print("you have inseterd the wrong thing try again")
-        card()
+    a = input('take the ticket pls.press any key and enter to continue: ')
 card()
 def parking():
     b = input('''
-    there is a parking at:
+    the only parkings are at:
     a.parking lot 23
     b.parking lot 34
     where do you want to park?:
     ''')
     if b == 'a' or b == 'b' or b == 'parking lot 23' or b == 'parking lot 34' or b == '23'or b == '34':
         print('go for securty cheek number 2')
+    elif b == '' or b == ' ':
+        print('you did not input anything. please try again')
+        parking()
     else:
         print("parking is full try another one")
         parking()
@@ -43,40 +40,56 @@ def securty2():
     import time
     time.sleep(1)
     print('pls santize')
-    print("your tempreture is")
-    import random
-    a = random.randrange(35,37)
-    print(a)
+    def temreture():
+        try:
+            temreture1 = float(input("pls input your temreture: "))
+            if temreture1 > 37:
+                print("you can not enter becouse we thing you have covid19")
+                exit()  
+            elif temreture1 == '' or temreture1 == ' ':
+                print('you have inputed nothing try again')
+                temreture()
+            elif temreture1 <  37:
+                print('WELCOME TO MY SUPER MARKET')
+            elif temreture1 == '' or temreture1 == ' ':
+                print('inputed nothing')
+        except ValueError:
+            print ('That is not a number')
+            temreture()
+    temreture()
 securty2()
 
 def items():
     categorys = input('''
-    WE HAVE FIVE CATEGORYS :
+    WE HAVE FIVE CATEGORYS YOU CAN SHOP FROM:
     a.foods
     b.laundry
     c.electronics
     d.clothes
     e.hard where
     f.toys
-    : 
+    PLEASE CHOOSE A CATEGORY: 
     ''')
-    if categorys == 'a':
+    if categorys == 'a' or categorys == 'foods':
         def food():
             d = input('''
+            You are now in the food section
             WE HAVE:
-            1.milk
-            2.bread
-            3.yogurt
-            4.sweet
-            5.crisps
+            1.milk 40 ksh
+            2.bread 60 ksh 
+            3.yogurt 60 ksh
+            4.sweet 5ksh
+            5.crisps 20 ksh
+            what do you want to buy
             ''')
             global total
             total = 0
             if d == '1':
-                print('that is 40ksh for 1 paket')
+                y = int(input('how many do you want:'))
                 global e
                 e = 40
-                total += e
+                z = y*e
+                total += z
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
                 print('you have bought milk  for '+ str(e))
@@ -114,18 +127,20 @@ def items():
                 print('you have bought crisps for'+ str(i))
             else:
                 print('item not found try again')
-                items()
-            j = input('do you want to buy a nother item y or n:')
+                food()
+            j = input('do you want to buy a nother item y or any leter to give bill:')
             if j == 'y':
                 items()
         food()
         
-    elif categorys  == 'b' :
+    elif categorys  == 'b' or categorys == 'laundry':
         def londry():
             m = input('''
-            a.soap
-            b.shampoo
-            c.cloth
+            You are now in the londry section
+            a.soap 20ksh
+            b.shampoo 650ksh
+            c.cloth 190ksh
+            what do you want to buy
             ''')
             global total
             total = 0
@@ -133,7 +148,7 @@ def items():
                 print('that is 20ksh for 1 bar')
                 n = 20
                 total += n
-                c.execute('INSERT INTO food(total)VALUES(?)',(total,))
+                c.execute('INSERT INTO billing(bill)VALUES(?)',(total,))
                 conn.commit()
             elif m == 'b':
                 print('that is 650 par paket')
@@ -149,18 +164,20 @@ def items():
                 conn.commit()
             else:
                 print('item not found try again')
-                items()
-            j = input('do you want to buy a nother item y or n:')
+                londry()
+            j = input('do you want to buy a nother item y or any leter to give bill:')
             if j == 'y':
                 items()
         londry()
-    elif categorys == 'c':
+    elif categorys == 'c' or categorys == 'electronics':
         def electroniks():
             q = input('''
-            a.T.V
-            b.washing machine
-            c.fridge
-            d.laptop
+            You are now in the electronics section
+            a.T.V 21579ksh
+            b.washing machine 18868ksh
+            c.fridge 26242ksh
+            d.laptop 32423ksh
+            what do you want to buy
             ''')
             global total
             total = 0
@@ -190,19 +207,21 @@ def items():
                 conn.commit()
             else:
                 print('item not found try again')
-                items()
-            j = input('do you want to buy a nother item y or n:')
+                electroniks()
+            j = input('do you want to buy a nother item y or any leter to give bill:')
             if j == 'y':
                 items()
         electroniks()
         
-    elif categorys == 'd':
+    elif categorys == 'd' or categorys == 'clothes':
         def cloths():
 
             a = input('''
-            a.Tshirts
-            b.shorts
-            c.jens
+            You are now in the coths section
+            a.Tshirts 300ksh
+            b.shorts 300ksh
+            c.jens 400ksh
+            what do you want to buy
             ''')
             global total
             total = 0
@@ -227,16 +246,18 @@ def items():
             else:
                 print('item not found try again')
                 items()
-            j = input('do you want to buy a nother item y or n:')
+            j = input('do you want to buy a nother item y or any leter to give bill:')
             if j == 'y':
-                items()
+                cloths()
         cloths()
-    elif categorys  == 'e':
+    elif categorys  == 'e'or categorys == 'hard where':
         def hard_where():
             e = input('''
-            a.wheelbarow
-            b.hammer
-            c.scew driver
+            You are now in the hard_where section
+            a.wheelbarow 500ksh
+            b.hammer 750 ksh
+            c.scew driver 270ksh
+            what do you want to buy
             ''')
             global total
             total = 0
@@ -260,17 +281,19 @@ def items():
                 conn.commit()
             else:
                 print('item not found try again')
-                items()
-            j = input('do you want to buy a nother item y or n:')
+                hard_where()
+            j = input('do you want to buy a nother item y or any leter to give bill:')
             if j == 'y':
                 items()
         hard_where()
-    elif categorys == 'f':
+    elif categorys == 'f'or categorys == 'toys':
         def toys():
             e = input('''
-            a.drown
-            b.nerf gun
-            c.Waterproof RC Monster Truck Stunt Car
+            You are now in the toys section
+            a.drown 3900ksh
+            b.nerf gun 1000
+            c.Waterproof RC Monster Truck Stunt Car 4551ksh
+            what do you want to buy
             ''')
             global total
             total = 0
@@ -294,11 +317,14 @@ def items():
                 conn.commit()
             else:
                 print('item not found try again')
-                items()
-            j = input('do you want to buy a nother item y or n:')
+                toys()
+            j = input('do you want to buy a nother item y or any leter to give bill:')
             if j == 'y':
                 items()
         toys()
+    else:
+        print('oya you inputed wrong thing try again')
+        items()
             
 items()
             
@@ -324,6 +350,7 @@ def paying():
     else:
         print('pls return trawily')
 paying()
+print('good bye')
     
     
     

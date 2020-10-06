@@ -11,4 +11,4 @@ def table():
 table()
 def bill_table():
     c.execute('CREATE TABLE IF NOT EXISTS billing( bill INTEGER)')
-bill_table()
+bill_table() 
