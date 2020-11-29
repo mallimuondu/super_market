@@ -92,7 +92,7 @@ def items():
                 total += z
                 c.execute('INSERT INTO food(total)VALUES(?)',(total,))
                 conn.commit()
-                print('you have bought milk  for '+ str(e))
+                print('you have bought milk  for '+ str(z))
             elif d == '2':
                 print('that is 60ksh for a loaf of bread')
                 global f
